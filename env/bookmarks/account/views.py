@@ -2,10 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-# from django.contrib import messages
-# from .models import Profile
-from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+from django.contrib import messages
 from .models import Profile
+from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 
 
 def user_login(request):
