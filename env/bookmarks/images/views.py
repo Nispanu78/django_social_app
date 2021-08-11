@@ -19,7 +19,6 @@ def image_create(request):
         form = ImageCreateForm(data=request.POST)
         if form.is_valid():
             # form data is valid
-            cd = form.cleaned_data
             new_item = form.save(commit=False)
 
             # assign current user to the item
@@ -38,12 +37,14 @@ def image_create(request):
                   {'section': 'images',
                    'form': form})
 
+
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
     return render(request,
                   'images/image/detail.html',
                   {'section': 'images',
                    'image': image})
+
 
 @ajax_required
 @login_required
@@ -62,6 +63,7 @@ def image_like(request):
         except:
             pass
     return JsonResponse({'status':'error'})
+
 
 @login_required
 def image_list(request):
